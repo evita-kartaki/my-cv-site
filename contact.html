@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Me - My CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"> <!-- Αν έχεις εξωτερικό CSS -->
+ 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My CV - Web Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/my-cv-logo-2.png" type="image/png">
+
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: auto;
+  min-height: 100%;
+  overflow-y: auto;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fff;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px 60px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header img.logo {
+  height: 60px;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 550;
+}
+
+.login-button {
+  padding: 8px 16px;
+  background-color: #f1f1f1;
+  border-radius: 20px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 25px;
+  gap: 5px;
+}
+
+.burger div {
+  height: 3px;
+  background-color: #1a1a1a;
+  border-radius: 2px;
+}
+
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+
+.contact-section {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+}
+
+.contact-section p {
+  margin-bottom: 30px;
+  font-size: 16px;
+  color: #444;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #e64980;
+}
+
+.contact-form button {
+  background-color: #e64980;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #d7376f;
+}
+
+@media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px;
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+    }
+  </style>
+
+</head>
+<body>
+
+<header>
+    <div class="header-left">
+      <div class="burger" onclick="toggleMobileMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <a href="index.html">
+  <img src="images/my-cv-logo-1.png" alt="My CV Logo" class="logo">
+</a>
+    </div>
+
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="service.html">Services</a>
+      <a href="aboutme.html">About Me</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <button class="login-button">Log In</button>
+
+    <div class="mobile-nav" id="mobile-menu" style="display: none;">
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="service.html">Services</a>
+      <a href="aboutme.html">About Me</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <section class="contact-section">
+  <h2>Contact Me</h2>
+  <p>Have a project in mind or just want to say hello? Feel free to reach out!</p>
+  
+  <form class="contact-form" action="mailto:your-email@example.com" method="post" enctype="text/plain">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+    <button type="submit" class="btn-primary">Send Message</button>
+  </form>
+</section>
+
+
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById("mobile-menu");
+      menu.style.display = (menu.style.display === "none" || menu.style.display === "") ? "flex" : "none";
+    }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My CV - Web Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/my-cv-logo-2.png" type="image/png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fff;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 20px 60px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    header img.logo {
+      height: 60px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #1a1a1a;
+      font-weight: 550;
+    }
+
+    .login-button {
+      padding: 8px 16px;
+      background-color: #f1f1f1;
+      border-radius: 20px;
+      border: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 25px;
+      gap: 5px;
+    }
+
+    .burger div {
+      height: 3px;
+      background-color: #1a1a1a;
+      border-radius: 2px;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 10px;
+      align-items: center;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 60px;
+      flex-wrap: wrap;
+      background-color: #fff;
+    }
+
+    .hero-content {
+      flex: 1 1 400px;
+      max-width: 550px;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      padding: 10px 20px;
+      font-size: 15px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      min-width: 140px;
+    }
+
+    .btn-primary {
+      background-color: #e64980;
+      color: white;
+      border: none;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      border: 2px solid #1a1a1a;
+      color: #1a1a1a;
+    }
+
+    .hero-image {
+      flex: 1 1 300px;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px;
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
+      .hero {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 40px 20px;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <div class="burger" onclick="toggleMobileMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+<a href="index.html">
+  <img src="images/my-cv-logo-1.png" alt="My CV Logo" class="logo">
+</a>
+    </div>
+
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="service.html">Services</a>
+      <a href="aboutme.html">About Me</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <button class="login-button">Log In</button>
+
+    <div class="mobile-nav" id="mobile-menu" style="display: none;">
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="service.html">Services</a>
+      <a href="aboutme.html">About Me</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Kartaki Paraskevi</h1>
+      <p>
+        I specialize in front-end development, focusing on building modern, responsive websites that offer smooth user experiences. I work with HTML, CSS, and JavaScript to create clean, accessible interfaces. I also have hands-on experience with content management systems (CMS) like WordPress, which allows me to deliver fully functional websites — from layout to dynamic content management. My goal is to bridge design and technology by building front-end solutions that are both visually engaging and technically solid.
+      </p>
+      <div class="hero-buttons">
+      <a href="pdf/cv-kartaki.pdf" class="btn-primary" target="_blank">View CV</a>        
+      <a href="contact.html" class="btn-secondary">Contact Me</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="images/home-image.png" alt="Developer at work">
+    </div>
+  </section>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById("mobile-menu");
+      menu.style.display = (menu.style.display === "none" || menu.style.display === "") ? "flex" : "none";
+    }
+  </script>
+
+</body>
+</html>

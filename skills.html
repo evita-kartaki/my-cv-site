@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skills - My CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/my-cv-logo-2.png" type="image/png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      min-height: 100%;
+      overflow-y: auto;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fff;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 20px 60px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    header img.logo {
+      height: 60px;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #1a1a1a;
+      font-weight: 550;
+    }
+    .login-button {
+      padding: 8px 16px;
+      background-color: #f1f1f1;
+      border-radius: 20px;
+      border: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 25px;
+      gap: 5px;
+    }
+    .burger div {
+      height: 3px;
+      background-color: #1a1a1a;
+      border-radius: 2px;
+    }
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 10px;
+      align-items: center;
+    }
+    .skills-section {
+      width: 90%;
+      max-width: 1200px;
+      margin: 50px auto;
+    }
+    .skills-section h2 {
+      text-align: center;
+      font-size: 28px;
+      margin: 40px 0 30px;
+      color: #1a1a1a;
+    }
+    .skill {
+      margin-bottom: 30px;
+    }
+    .skill span {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    .progress-bar {
+      background-color: #e0e0e0;
+      height: 22px;
+      border-radius: 15px;
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+    }
+    .progress {
+      background-color: #e64980;
+      height: 100%;
+      width: 0;
+      transition: width 1.8s ease-out;
+      border-radius: 15px;
+    }
+    .progress-label {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .circular-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 50px;
+      margin-bottom: 40px;
+    }
+    .circular {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      text-align: center;
+    }
+    .progress-ring {
+      transform: rotate(-90deg);
+    }
+    .ring-bg {
+      fill: none;
+      stroke: #eee;
+      stroke-width: 10;
+    }
+    .ring-fill {
+      fill: none;
+      stroke: #e64980;
+      stroke-width: 10;
+      stroke-dasharray: 339.292;
+      stroke-dashoffset: 339.292;
+      transition: stroke-dashoffset 2s ease-out;
+    }
+    .circular-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: bold;
+      font-size: 18px;
+      color: #1a1a1a;
+    }
+    .circular p {
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+    .soft-skills-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      text-align: left;
+    }
+    .soft-skills-list li {
+      background-color: #f8f8f8;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      color: #1a1a1a;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px;
+      }
+      .burger {
+        display: flex;
+      }
+      nav {
+        display: none;
+      }
+      .mobile-nav {
+        display: flex;
+      }
+      .skills-section h2 {
+        font-size: 24px;
+      }
+      .skill span {
+        font-size: 14px;
+      }
+      .progress-bar {
+        height: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-left">
+    <div class="burger" onclick="toggleMobileMenu()">
+      <div></div><div></div><div></div>
+    </div>
+    <a href="index.html">
+      <img src="images/my-cv-logo-1.png" alt="My CV Logo" class="logo">
+    </a>
+  </div>
+  <nav id="desktop-nav">
+    <a href="index.html">Home</a>
+    <a href="skills.html">Skills</a>
+    <a href="service.html">Services</a>
+    <a href="aboutme.html">About Me</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <button class="login-button">Log In</button>
+  <div class="mobile-nav" id="mobile-menu" style="display: none;">
+    <a href="index.html">Home</a>
+    <a href="skills.html">Skills</a>
+    <a href="service.html">Services</a>
+    <a href="aboutme.html">About Me</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</header>
+
+<section class="skills-section">
+  <h2>Programming Skills</h2>
+  <div class="skill"><span>HTML</span><div class="progress-bar"><div class="progress" data-percentage="80"></div><span class="progress-label">80%</span></div></div>
+  <div class="skill"><span>CSS</span><div class="progress-bar"><div class="progress" data-percentage="75"></div><span class="progress-label">75%</span></div></div>
+  <div class="skill"><span>JavaScript</span><div class="progress-bar"><div class="progress" data-percentage="65"></div><span class="progress-label">65%</span></div></div>
+  <div class="skill"><span>Python</span><div class="progress-bar"><div class="progress" data-percentage="80"></div><span class="progress-label">80%</span></div></div>
+
+  <h2>CMS</h2>
+  <div class="circular-container">
+    <div class="circular" data-percentage="80">
+      <svg class="progress-ring" width="120" height="120">
+        <circle class="ring-bg" r="54" cx="60" cy="60"/>
+        <circle class="ring-fill" r="54" cx="60" cy="60"/>
+      </svg>
+      <span class="circular-label">80%</span>
+      <p>WordPress</p>
+    </div>
+    <div class="circular" data-percentage="75">
+      <svg class="progress-ring" width="120" height="120">
+        <circle class="ring-bg" r="54" cx="60" cy="60"/>
+        <circle class="ring-fill" r="54" cx="60" cy="60"/>
+      </svg>
+      <span class="circular-label">75%</span>
+      <p>Joomla</p>
+    </div>
+  </div>
+&nbsp;
+  <h2>E-commerce Tools</h2>
+  <div class="circular-container">
+    <div class="circular" data-percentage="80">
+      <svg class="progress-ring" width="120" height="120">
+        <circle class="ring-bg" r="54" cx="60" cy="60"/>
+        <circle class="ring-fill" r="54" cx="60" cy="60"/>
+      </svg>
+      <span class="circular-label">80%</span>
+      <p>WooCommerce</p>
+    </div>
+    <div class="circular" data-percentage="70">
+  <svg class="progress-ring" width="120" height="120">
+    <circle class="ring-bg" r="54" cx="60" cy="60"/>
+    <circle class="ring-fill" r="54" cx="60" cy="60"/>
+  </svg>
+  <span class="circular-label">70%</span>
+  <p>VirtueMart</p>
+</div>
+  </div>
+&nbsp;
+  <h2>Design Tools</h2>
+  <div class="skill"><span>Adobe Photoshop</span><div class="progress-bar"><div class="progress" data-percentage="70"></div><span class="progress-label">70%</span></div></div>
+  <div class="skill"><span>Canva</span><div class="progress-bar"><div class="progress" data-percentage="85"></div><span class="progress-label">85%</span></div></div>
+
+  <h2>Soft Skills</h2>
+  <ul class="soft-skills-list">
+    <li>✔️ Communication</li>
+    <li>✔️ Teamwork & Collaboration</li>
+    <li>✔️ Problem Solving</li>
+    <li>✔️ Time Management</li>
+    <li>✔️ Adaptability</li>
+    <li>✔️ Attention to Detail</li>
+    <li>✔️ Creativity</li>
+  </ul>
+</section>
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById("mobile-menu");
+    menu.style.display = (menu.style.display === "none" || menu.style.display === "") ? "flex" : "none";
+  }
+  window.addEventListener("load", () => {
+    document.querySelectorAll(".progress").forEach(bar => {
+      const percent = bar.getAttribute("data-percentage");
+      bar.style.width = percent + "%";
+    });
+    document.querySelectorAll(".circular").forEach(circle => {
+      const percent = circle.getAttribute("data-percentage");
+      const ring = circle.querySelector(".ring-fill");
+      const label = circle.querySelector(".circular-label");
+      const radius = 54;
+      const circumference = 2 * Math.PI * radius;
+      const offset = circumference - (percent / 100) * circumference;
+      ring.style.strokeDashoffset = offset;
+      if (label) label.textContent = percent + "%";
+    });
+  });
+</script>
+</body>
+</html>

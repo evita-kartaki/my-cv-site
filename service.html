@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services - My CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"> <!-- Αν έχεις εξωτερικό CSS -->
+ 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My CV - Web Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/my-cv-logo-2.png" type="image/png">
+
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: auto;
+  min-height: 100%;
+  overflow-y: auto;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fff;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px 60px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header img.logo {
+  height: 60px;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 550;
+}
+
+.login-button {
+  padding: 8px 16px;
+  background-color: #f1f1f1;
+  border-radius: 20px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 25px;
+  gap: 5px;
+}
+
+.burger div {
+  height: 3px;
+  background-color: #1a1a1a;
+  border-radius: 2px;
+}
+
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+
+
+/* --------------------------- */
+/* RESPONSIVE DESIGN           */
+/* --------------------------- */
+
+.services-section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.services-section h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #1a1a1a;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.service-card {
+  background-color: #fafafa;
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card h3 {
+  margin-bottom: 12px;
+  color: #e64980;
+  font-size: 20px;
+}
+
+.service-card p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* Responsive tweaks (αυτό το κρατάς ΜΕΣΑ στο media query) */
+@media (max-width: 768px) {
+  .services-section h2 {
+    font-size: 26px;
+  }
+
+  .service-card h3 {
+    font-size: 18px;
+  }
+
+  .service-card p {
+    font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px;
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+    }
+
+  </style>
+
+</head>
+<body>
+
+<header>
+    <div class="header-left">
+      <div class="burger" onclick="toggleMobileMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+     <a href="index.html">
+  <img src="images/my-cv-logo-1.png" alt="My CV Logo" class="logo">
+</a>
+    </div>
+
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="service.html">Services</a>
+      <a href="aboutme.html">About Me</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <button class="login-button">Log In</button>
+
+    <div class="mobile-nav" id="mobile-menu" style="display: none;">
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="service.html">Services</a>
+      <a href="aboutme.html">About Me</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+
+  <section class="services-section">
+  <h2>My Services</h2>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <h3>Web Design with HTML/CSS</h3>
+      <p>I create clean, modern layouts using semantic HTML and advanced CSS techniques like Flexbox and Grid.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Front-End Development (JavaScript / React)</h3>
+      <p>I build dynamic and interactive web interfaces using JavaScript and React, focusing on performance and user experience.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>WordPress Setup & Customization</h3>
+      <p>I set up and customize WordPress websites — from installation to theme editing and plugin management.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>CMS Management</h3>
+      <p>I manage content using platforms like WordPress, helping clients keep their websites up-to-date and structured.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Responsive Design</h3>
+      <p>I ensure websites look and function perfectly on all screen sizes — mobile, tablet, and desktop.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Website Optimization</h3>
+      <p>I improve page speed, reduce load time, and follow best practices for faster and more efficient websites.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Basic SEO Knowledge</h3>
+      <p>I follow SEO best practices (meta tags, structure, speed) to improve visibility and ranking in search engines.</p>
+    </div>
+
+  </div>
+</section>
+
+  
+
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById("mobile-menu");
+      menu.style.display = (menu.style.display === "none" || menu.style.display === "") ? "flex" : "none";
+    }
+
+</script>
+
+
+</body>
+</html>

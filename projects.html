@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="my-cv-logo-2.png" type="image/png">
+
+  <style>
+    /* Reset & base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fff;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 20px 60px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    .header-left { display: flex; align-items: center; gap: 20px; }
+    header img.logo { height: 60px; }
+
+    nav { display: flex; gap: 20px; }
+    nav a { text-decoration: none; color: #1a1a1a; font-weight: 550; }
+
+    .login-button {
+      padding: 8px 16px;
+      background-color: #f1f1f1;
+      border-radius: 20px;
+      border: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 25px;
+      gap: 5px;
+    }
+    .burger div { height: 3px; background-color: #1a1a1a; border-radius: 2px; }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 10px;
+      align-items: center;
+    }
+
+    /* Hero (αν τον χρειαστείς σε άλλη σελίδα) */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 60px;
+      flex-wrap: wrap;
+      background-color: #fff;
+    }
+    .hero-content { flex: 1 1 400px; max-width: 550px; }
+    .hero h1 { font-size: 40px; color: #1a1a1a; margin-bottom: 20px; }
+    .hero p { font-size: 16px; color: #444; margin-bottom: 30px; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 15px; }
+    .btn-primary, .btn-secondary {
+      padding: 10px 20px; font-size: 15px; border-radius: 8px;
+      font-weight: 600; cursor: pointer; min-width: 140px;
+    }
+    .btn-primary { background-color: #e64980; color: white; border: none; }
+    .btn-secondary { background-color: transparent; border: 2px solid #1a1a1a; color: #1a1a1a; }
+    .hero-image { flex: 1 1 300px; text-align: center; margin-top: 30px; }
+    .hero-image img { max-width: 100%; height: auto; }
+
+    /* Projects */
+    .project-section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .project-section h2 {
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: #1a1a1a;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      justify-items: center;
+    }
+
+    .project-card {
+      background-color: #fff;
+      border-radius: 12px;
+      overflow: hidden; /* για να μη ξεφεύγει το video */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 360px;
+      transition: transform 0.3s ease;
+      text-align: left;
+    }
+    .project-card:hover { transform: translateY(-5px); }
+
+    .project-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+    }
+
+    .project-info { padding: 20px; }
+    .project-card h3 { color: #1a1a1a; margin-bottom: 10px; font-size: 20px; }
+    .project-card p { color: #444; font-size: 15px; margin-bottom: 15px; }
+    .tech-stack { font-size: 14px; margin-bottom: 15px; font-style: italic; }
+
+    .project-links a {
+      display: inline-block;
+      margin-right: 15px;
+      color: #e64980;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .project-links a:hover { text-decoration: underline; }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border: 1px solid #e5e5e5;
+      border-radius: 999px;
+      font-size: 12px;
+      line-height: 1;
+      color: #1a1a1a;
+      background: #fafafa;
+    }
+
+    /* Footer */
+    .footer {
+      font-family: 'Inter', sans-serif;
+      padding: 20px 60px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      background-color: #fff;
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 20px;
+    }
+    .footer-column h4 {
+      font-size: 13px;
+      letter-spacing: 1px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      color: #1a1a1a;
+    }
+    .footer-column ul { list-style: none; padding: 0; margin: 0; }
+    .footer-column ul li, .footer-column p { font-size: 14px; margin-bottom: 10px; }
+    .footer-column ul li a, .footer-column p a {
+      color: #1a1a1a; text-decoration: none; transition: color 0.3s ease;
+    }
+    .footer-column ul li a:hover, .footer-column p a:hover { color: #e64980; }
+    .footer-bottom { text-align: center; margin-top: 25px; font-size: 13px; color: #aaa; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 768px) {
+      header { flex-direction: row; justify-content: space-between; padding: 20px; }
+      .burger { display: flex; }
+      nav { display: none; }
+      .mobile-nav { display: flex; }
+
+      .hero {
+        flex-direction: column; align-items: center; text-align: center; padding: 40px 20px;
+      }
+      .hero-buttons { justify-content: center; }
+
+      .footer-container { grid-template-columns: 1fr; text-align: center; }
+      .project-section { padding: 30px 20px; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <div class="burger" onclick="toggleMobileMenu()">
+        <div></div><div></div><div></div>
+      </div>
+      <a href="index.html">
+        <img src="my-cv-logo-1.png" alt="My CV Logo" class="logo">
+      </a>
+    </div>
+
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="service.html">Services</a>
+      <a href="projects.html">My Projects</a>
+      <a href="aboutme.html">About Me</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <button class="login-button">Log In</button>
+
+    <div class="mobile-nav" id="mobile-menu" style="display: none;">
+      <a href="index.html">Home</a>
+      <a href="skills.html">Skills</a>
+      <a href="service.html">Services</a>
+      <a href="projects.html">My Projects</a>
+      <a href="aboutme.html">About Me</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <section class="project-section">
+    <h2>My Projects</h2>
+
+    <div class="projects-grid">
+      <!-- Project 1: Hair Booking App (με εικόνα + links) -->
+      <div class="project-card">
+        <div class="project-info">
+          <div class="project-meta">
+            <span class="badge">Web App</span>
+            <span class="badge">Booking</span>
+            <span class="badge">Firebase</span>
+          </div>
+          <h3>Hair Booking App</h3>
+          <p>
+A fully functional booking system for hair salons, enabling users to choose services, see available slots based on staff schedules, and book seamlessly on a responsive interface.          </p>
+          <p class="tech-stack">Technologies: Firebase, HTML5, CSS3, JavaScript</p>
+          <div class="project-links">
+            <a href="https://evita-kartaki.github.io/hair-reservation-site/" target="_blank" rel="noopener">Live Demo</a>
+            <a href="https://github.com/evita-kartaki/hair-reservation-site" target="_blank" rel="noopener">View Code</a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Project 2: EPSA – Social Promo Bumper (Performance Promo) -->
+      <div class="project-card">
+        <video
+          class="project-image"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          onloadedmetadata="this.currentTime=0.5"
+          aria-label="EPSA Social Promo Bumper video preview"
+        >
+          <source src="marketing-epsa.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="project-info">
+          <div class="project-meta">
+            <span class="badge">Promo</span>
+            <span class="badge">15s Bumper</span>
+            <span class="badge">Canva </span>
+          </div>
+          <h3>EPSA – Social Promo Bumper</h3>
+          <p>A short, thumb-stopping 15-second promo created for Instagram/Facebook Stories, focusing on quick cuts, dynamic keyframes, and a strong call-to-action to drive engagement.</p>
+          <p class="tech-stack">Workflow: Storyboarding → Brand kit → Motion templates → Export για Meta placements</p>
+        </div>
+      </div>
+
+      <!-- Project 3: Diamond Shine – Logo Reveal (Brand Identity) -->
+      <div class="project-card">
+        <video
+          class="project-image"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          onloadedmetadata="this.currentTime=0.6"
+          aria-label="Diamond Shine Logo Reveal video preview"
+        >
+          <source src="diamond.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="project-info">
+          <div class="project-meta">
+            <span class="badge">Logo Reveal</span>
+            <span class="badge">Brand Identity</span>
+            <span class="badge">Light & Reflections</span>
+          </div>
+          <h3>Diamond Shine – Logo Reveal</h3>
+          <p>A motion intro for brand presentations and landing pages. It highlights lighting effects, reflections, and a premium aesthetic to create a powerful first impression.</p>
+          <p class="tech-stack">Workflow: Moodboard → Timing curves → Visual effects → Transparent/MP4 exports</p>
+        </div>
+      </div>
+
+      <!-- Project 4: Morning Coffee – Teaser with Kinetic Type (Storytelling) -->
+      <div class="project-card">
+        <video
+          class="project-image"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          onloadedmetadata="this.currentTime=0.8"
+          aria-label="Morning Coffee teaser with kinetic typography video preview"
+        >
+          <source src="coffee.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="project-info">
+          <div class="project-meta">
+            <span class="badge">UI Motion</span>
+            <span class="badge">Teaser</span>
+            <span class="badge">Typography</span>
+          </div>
+          <h3>Morning Coffee – Teaser with Kinetic Type</h3>
+          <p>A product teaser video combining kinetic typography with soft transitions, crafted to guide attention to the message and reinforce brand recall.</p>
+          <p class="tech-stack">Workflow: Copywriting → Kinetic type → Color grading → Export 9:16/1:1/16:9</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>LOCATION</h4>
+        <p>Heraklion, Crete</p>
+      </div>
+      <div class="footer-column">
+        <h4>ABOUT</h4>
+        <ul>
+          <li><a href="aboutme.html">About Me</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="projects.html">My Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>FOLLOW ME</h4>
+        <ul>
+          <li><a href="https://www.linkedin.com/in/kartakiparaskevi" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://www.instagram.com/evita_kartaki?igsh=aDR2a3owMDhiZHdu&utm_source=qr" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://github.com/evita-kartaki" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>CONTACT</h4>
+        <p><a href="contact.html">Get in touch with me</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 All rights reserved</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById("mobile-menu");
+      menu.style.display = (menu.style.display === "none" || menu.style.display === "") ? "flex" : "none";
+    }
+
+    // Pause/Play videos intelligently based on viewport visibility
+    const videos = Array.from(document.querySelectorAll('.project-card video'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          if (e.target.dataset.shouldPlay !== 'false') {
+            e.target.play().catch(()=>{});
+          }
+        } else {
+          e.target.pause();
+        }
+      });
+    }, { threshold: 0.35 });
+    videos.forEach(v => io.observe(v));
+
+    // Respect Data Saver: disable autoplay if user economizes data
+    if (navigator.connection && navigator.connection.saveData) {
+      videos.forEach(v => {
+        v.autoplay = false;
+        v.dataset.shouldPlay = 'false';
+        v.pause();
+      });
+    }
+  </script>
+
+</body>
+</html>
